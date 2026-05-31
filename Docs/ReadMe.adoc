@@ -1,6 +1,7 @@
 QtKeychain
 ==========
 
+
 QtKeychain is a Qt API to store passwords and other secret data securely. How the data is stored depends on the platform:
 
  * **macOS:** Passwords are stored in the macOS Keychain.
