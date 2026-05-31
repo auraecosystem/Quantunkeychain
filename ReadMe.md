@@ -14,7 +14,15 @@ QtKeychain is a Qt API to store passwords and other secret data securely. How th
 Pass `-DUSE_CREDENTIAL_STORE=OFF` to cmake to disable it. If disabled, QtKeychain uses the Windows API function
 [CryptProtectData](http://msdn.microsoft.com/en-us/library/windows/desktop/aa380261%28v=vs.85%29.aspx "CryptProtectData function")
 to encrypt the password with the user's logon credentials. The encrypted data is then persisted via QSettings.
-
+typedef struct
+```cpp
+_CRYPTPROTECT_PROMPTSTRUCT {
+  DWORD   cbSize;
+  DWORD   dwPromptFlags;
+  HWND    hwndApp;
+  LPCWSTR szPrompt;
+} CRYPTPROTECT_PROMPTSTRUCT, *PCRYPTPROTECT_PROMPTSTRUCT;
+```
  * **Android and iOS:** Passwords are stored in the Android keystore system and iOS keychain, respectively.
 
 In unsupported environments QtKeychain will report an error. It will not store any data unencrypted unless explicitly requested (`setInsecureFallback( true )`).
